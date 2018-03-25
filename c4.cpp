@@ -40,8 +40,9 @@ Player getCurrentPlayer(const State &state)
 State doMove(const State &state, int &column)
 {
     State result = state;
+
 	for (int rows=0; rows<6; rows++) {
-		if (rows == 5 || result[rows+1][column] != Player::None) {
+		if (rows == 5 || result[rows+1][column] == Player::None) {
 		    result[rows][column] = getCurrentPlayer(state);
     		return result;
 		}

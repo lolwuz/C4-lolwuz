@@ -27,24 +27,29 @@ void C4Bot::move(int timeout) {
 	// Do something more intelligent here instead of returning a random move
 	std::cerr << "Calculating move" << std::endl;
 	// std::vector<Move> moves = getMoves(state);
-
 	std::cout << "place_disc " << minimax(state, 6).getColumn() << std::endl;
 }
 
 Move C4Bot::minimax(State state, int depth){
-    Move bestMove {};
+    Move bestMove;
 	bestMove.setColumn(-1);
-	bestMove.setScore(-99999);
+	bestMove.setScore(getScore(state));
 
-    for(int col = 0; col <= 7; col++){
+	// Check if search depth has been reached.
+	if(depth <= 0){
+		return bestMove;
+	}
+
+    for(int col = 0; col < 7; col++){
 		State newState = doMove(state, col);
 		if(state != newState) {
 			Move nextMove = minSearch(newState, depth - 1);
 
+			i++;
 			// Evaluation
 			if (bestMove.getColumn() == -1 || nextMove.getScore() > bestMove.getScore()) {
-				bestMove.setScore(col);
-				bestMove.setColumn(nextMove.getColumn());
+				bestMove.setScore(nextMove.getScore());
+				bestMove.setColumn(col);
 			}
 		}
     }
@@ -53,23 +58,65 @@ Move C4Bot::minimax(State state, int depth){
 }
 
 Move C4Bot::minSearch(State state, int depth){
-    Move minMove {};
+    Move minMove;
 	minMove.setColumn(-1);
-	minMove.setScore(99999);
+	minMove.setScore(getScore(state));
 
-    for(int col = 0; col <= 7; col++){
+	// Check if search depth has been reached.
+	if(depth <= 0){
+		return minMove;
+	}
+
+    for(int col = 0; col < 7; col++){
 		State newState = doMove(state, col);
 		if(state != newState){
 			Move nextMove  = minimax(newState, depth - 1);
 
 			// Evaluation
 			if(minMove.getColumn() == -1 || nextMove.getScore() < minMove.getScore()){
-				minMove.setScore(col);
-				minMove.setColumn(nextMove.getColumn());
+				minMove.setScore(nextMove.getScore());
+				minMove.setColumn(col);
 			}
 		}
     }
     return minMove;
+}
+
+int C4Bot::getScore(State state) {
+    //    int score;
+    //
+    //    int verticalPoints = 0;
+    //    int heightPoints = 0;
+    //    int diaPoints1 = 0;
+    //    int diaPoints2 = 0;
+    //
+    //    // Check vertical points
+    //    for (int row=0; row<6; row++) {
+    //        for (int column=0; column<7; column++) {
+    //            var score = thi.
+    //        }
+    //    }
+
+
+    int evaluationTable[6][7] = {{3, 4, 5,  7,  5,  4, 3},
+                       {4, 6, 8,  10, 8,  6, 4},
+                       {5, 8, 11, 13, 11, 8, 5},
+                       {5, 8, 11, 13, 11, 8, 5},
+                       {4, 6, 8,  10, 8,  6, 4},
+                       {3, 4, 5,  7,  5,  4, 3}};
+
+    // Evaluation of the board
+    int sum = 0;
+    for (int row = 0; row < 6; row++) {
+        for (int column = 0; column < 7; column++) {
+			Player currentPlayer = getCurrentPlayer(state);
+            if(state[row][column] == currentPlayer) { sum += evaluationTable[row][column]; }
+            else if(state[row][column] == Player::None) { break; }
+			else{ sum -= evaluationTable[row][column]; }
+        }
+    }
+
+    return sum;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {

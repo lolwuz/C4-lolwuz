@@ -18,6 +18,8 @@ class C4Bot {
     int field_columns;
     int field_rows;
 
+    int i = 0;
+
     int round;
     State state = {{{{Player::None}}}};
 
@@ -30,6 +32,8 @@ class C4Bot {
     Move minimax(State state, int depth);
 
     Move minSearch(State state, int depth);
+
+    int getScore(State state);
 
     void setting(std::string &key, std::string &value);
 
