@@ -26,75 +26,50 @@ void C4Bot::run() {
 void C4Bot::move(int timeout) {
 	// Do something more intelligent here instead of returning a random move
 	std::cerr << "Calculating move" << std::endl;
-	std::vector<Move> moves = getMoves(state);
-	std::cout << "place_disc " << minimax(6) << std::endl;
+	// std::vector<Move> moves = getMoves(state);
+
+	std::cout << "place_disc " << minimax(state, 6).getColumn() << std::endl;
 }
 
-Move C4Bot::minimax(depth){
-    int value;
+Move C4Bot::minimax(State state, int depth){
+    Move bestMove {};
+	bestMove.setColumn(-1);
+	bestMove.setScore(-99999);
 
-    Move bestMove;
-    int bestMoveScore = 100;
+    for(int col = 0; col <= 7; col++){
+		State newState = doMove(state, col);
+		if(state != newState) {
+			Move nextMove = minSearch(newState, depth - 1);
 
-    for(int x = 0; x <= 7; x++){
-        for(int y = 0; y <= 6; y++){
-            if(state[x][y] == Player::None){
-                state[x][y] = getCurrentPlayer(state);
-                int tempScore = maxSearch(state);
-				std::cerr << "Calculating move" << std::endl;
-                if(tempScore <= bestMoveScore){
-                    bestMoveScore = tempScore;
-                    bestMove = y;
-                }
-                state[x][y] = Player::None;
-            }
-        }
+			// Evaluation
+			if (bestMove.getColumn() == -1 || nextMove.getScore() > bestMove.getScore()) {
+				bestMove.setScore(col);
+				bestMove.setColumn(nextMove.getColumn());
+			}
+		}
     }
-
+	// Return the best move
     return bestMove;
 }
 
-int C4Bot::maxSearch(State state){
-    Move bestMove;
+Move C4Bot::minSearch(State state, int depth){
+    Move minMove {};
+	minMove.setColumn(-1);
+	minMove.setScore(99999);
 
-    int bestMoveScore = -1000;
-    for(int x = 0; x <= 7; x++){
-        for(int y = 0; y <= 6; y++){
-            if(state[x][y] == Player::None){
-				if(getCurrentPlayer(state) == Player::O){
-					state[x][y] = Player::X;
-				} else {
-					state[x][y] = Player::O;
-				}
-                int tempScore = minSearch(state);
-                if(tempScore >= bestMoveScore){
-                    bestMoveScore = tempScore;
-                    bestMove = y;
-                }
-                state[x][y] = Player::None;
-            }
-        }
+    for(int col = 0; col <= 7; col++){
+		State newState = doMove(state, col);
+		if(state != newState){
+			Move nextMove  = minimax(newState, depth - 1);
+
+			// Evaluation
+			if(minMove.getColumn() == -1 || nextMove.getScore() < minMove.getScore()){
+				minMove.setScore(col);
+				minMove.setColumn(nextMove.getColumn());
+			}
+		}
     }
-    return bestMoveScore;
-}
-
-int C4Bot::minSearch(State state){
-    Move bestMove;
-
-    int bestMoveScore = -1000;
-    for(int x = 0; x <= 7; x++){
-        for(int y = 0; y <= 6; y++){
-            if(state[x][y] == Player::None){
-                state[x][y] = getCurrentPlayer(state);
-                int tempScore = maxSearch(state);
-                if(tempScore <= bestMoveScore){
-                    bestMoveScore = tempScore;
-                    bestMove = y;
-                }
-            }
-        }
-    }
-    return bestMoveScore;
+    return minMove;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {

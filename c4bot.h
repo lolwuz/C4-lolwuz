@@ -23,11 +23,13 @@ class C4Bot {
 
     std::vector<std::string> split(const std::string &s, char delim);
 
-    Move minimax();
+    /*
+     * Function determines the best move by minimax.
+     * https://nl.wikipedia.org/wiki/Minimax
+     */
+    Move minimax(State state, int depth);
 
-    int maxSearch(State state);
-
-    int minSearch(State state);
+    Move minSearch(State state, int depth);
 
     void setting(std::string &key, std::string &value);
 

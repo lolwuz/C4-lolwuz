@@ -37,12 +37,12 @@ Player getCurrentPlayer(const State &state)
     return (countX > countO ? Player::O : Player::X); 
 }
 
-State doMove(const State &state, const Move &m)
+State doMove(const State &state, int &column)
 {
     State result = state;
-	for (int r=0; r<6; r++) {
-		if (r == 5 || result[r+1][m] != Player::None) {		
-		    result[r][m] = getCurrentPlayer(state);
+	for (int rows=0; rows<6; rows++) {
+		if (rows == 5 || result[rows+1][column] != Player::None) {
+		    result[rows][column] = getCurrentPlayer(state);
     		return result;
 		}
 	}
@@ -77,13 +77,4 @@ Player getWinner(const State &state)
     return Player::None;
 }
 
-std::vector<Move> getMoves(const State &state)
-{
-    std::vector<Move> moves;
-	if (getWinner(state) == Player::None)
-		for (int i=0; i<7; i++)
-			if (state[0][i] == Player::None)
-				moves.push_back(i);
-    return moves;
-}
 
