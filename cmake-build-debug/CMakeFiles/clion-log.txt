@@ -1,0 +1,4 @@
+C:\Users\lolwuz\.CLion2017.3\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
