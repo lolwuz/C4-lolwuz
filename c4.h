@@ -33,7 +33,7 @@ Iter select_randomly(Iter start, Iter end) {
 std::ostream &operator<<(std::ostream& os, const Player &p);
 std::ostream &operator<<(std::ostream& os, const State &s);
 Player getCurrentPlayer(const State &state);
-void doMove(State &state, int &column);
+State doMove(const State &state, const int &m);
 void undoMove(State &state, Move lastMove);
 Player getWinner(const State &state);
 Player getOtherPlayer(Player me);

@@ -28,9 +28,11 @@ class C4Bot {
 
     std::vector<std::string> split(const std::string &s, char delim);
 
-    std::pair<int, int> negamax(int depth, int a, int b, int sign);
+    Move negamax(State board, int depth, int color);
 
-    int getScore(State board);
+    int getScore(State board, int color);
+
+    bool isOutOfBounds(int row, int col);
 
     void setting(std::string &key, std::string &value);
 

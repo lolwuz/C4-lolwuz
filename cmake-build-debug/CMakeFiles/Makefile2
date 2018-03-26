@@ -45,19 +45,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz
+CMAKE_SOURCE_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
 
 #=============================================================================
 # Target rules for target CMakeFiles/c4-lolwuz.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-bui
 CMakeFiles/c4-lolwuz.dir/all:
 	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/depend
 	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target c4-lolwuz"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target c4-lolwuz"
 .PHONY : CMakeFiles/c4-lolwuz.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/c4-lolwuz.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/c4-lolwuz.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/c4-lolwuz.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/c4-lolwuz.dir/rule
 
 # Convenience name for target.

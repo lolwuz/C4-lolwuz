@@ -37,14 +37,16 @@ Player getCurrentPlayer(const State &state)
     return (countX > countO ? Player::O : Player::X); 
 }
 
-void doMove(State &state, int &column)
+State doMove(const State &state, const int &m)
 {
-	for (int rows=0; rows<6; rows++) {
-		if (rows == 5 || state[rows+1][column] == Player::None) {
-		    state[rows][column] = getCurrentPlayer(state);
-            Move lastMove = Move(column, 0);
-		}
-	}
+    State result = state;
+    for (int r=0; r<6; r++) {
+        if (r == 5 || result[r+1][m] != Player::None) {
+            result[r][m] = getCurrentPlayer(state);
+            return result;
+        }
+    }
+    return result; // Invalid move
 }
 
 void undoMove(State &state, Move lastMove){
