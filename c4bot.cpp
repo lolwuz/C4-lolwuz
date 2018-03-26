@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <list>
+#include <climits>
 
 void C4Bot::run() {
 	std::string line;
@@ -24,99 +25,249 @@ void C4Bot::run() {
 }
 
 void C4Bot::move(int timeout) {
+
+    currentPlayer = getCurrentPlayer(state);
+    otherPlayer = getOtherPlayer(currentPlayer);
+
 	// Do something more intelligent here instead of returning a random move
-	std::cerr << "Calculating move" << std::endl;
+
 	// std::vector<Move> moves = getMoves(state);
-	std::cout << "place_disc " << minimax(state, 6).getColumn() << std::endl;
+
+    Move move = negamax(6, INT_MIN, INT_MAX, 1);
+
+    std::cout << "place_disc " << move.first << std::endl;
 }
 
-Move C4Bot::minimax(State state, int depth){
-    Move bestMove;
-	bestMove.setColumn(-1);
-	bestMove.setScore(getScore(state));
-
-	// Check if search depth has been reached.
-	if(depth <= 0){
-		return bestMove;
-	}
-
-    for(int col = 0; col < 7; col++){
-		State newState = doMove(state, col);
-		if(state != newState) {
-			Move nextMove = minSearch(newState, depth - 1);
-
-			i++;
-			// Evaluation
-			if (bestMove.getColumn() == -1 || nextMove.getScore() > bestMove.getScore()) {
-				bestMove.setScore(nextMove.getScore());
-				bestMove.setColumn(col);
-			}
-		}
+std::pair<int, int> C4Bot::negamax(int depth, int a, int b, int sign){
+    if(depth <= 0 ) {
+        int score = getScore(state);
+        return Move(-1, sign * score);
     }
-	// Return the best move
-    return bestMove;
-}
 
-Move C4Bot::minSearch(State state, int depth){
-    Move minMove;
-	minMove.setColumn(-1);
-	minMove.setScore(getScore(state));
+    int bestCol = 3;
+    int bestValue = INT_MIN;
 
-	// Check if search depth has been reached.
-	if(depth <= 0){
-		return minMove;
-	}
+    for(Move move:getMoves(state)){
 
-    for(int col = 0; col < 7; col++){
-		State newState = doMove(state, col);
-		if(state != newState){
-			Move nextMove  = minimax(newState, depth - 1);
+        doMove(state, move.first);
 
-			// Evaluation
-			if(minMove.getColumn() == -1 || nextMove.getScore() < minMove.getScore()){
-				minMove.setScore(nextMove.getScore());
-				minMove.setColumn(col);
-			}
-		}
+        int value = -negamax(depth - 1, -a, -b, -sign).second;
+
+        undoMove(state, lastMove);
+
+        if(value > bestValue){
+            bestValue = value;
+            bestCol = move.first;
+        }
+
+        a = std::max(value, a);
+
+        if(a >= b)
+            break;
     }
-    return minMove;
+    return std::pair<int, int>(bestCol, bestValue);
 }
 
-int C4Bot::getScore(State state) {
-    //    int score;
-    //
-    //    int verticalPoints = 0;
-    //    int heightPoints = 0;
-    //    int diaPoints1 = 0;
-    //    int diaPoints2 = 0;
-    //
-    //    // Check vertical points
-    //    for (int row=0; row<6; row++) {
-    //        for (int column=0; column<7; column++) {
-    //            var score = thi.
-    //        }
-    //    }
-
-
-    int evaluationTable[6][7] = {{3, 4, 5,  7,  5,  4, 3},
-                       {4, 6, 8,  10, 8,  6, 4},
-                       {5, 8, 11, 13, 11, 8, 5},
-                       {5, 8, 11, 13, 11, 8, 5},
-                       {4, 6, 8,  10, 8,  6, 4},
-                       {3, 4, 5,  7,  5,  4, 3}};
-
-    // Evaluation of the board
-    int sum = 0;
-    for (int row = 0; row < 6; row++) {
-        for (int column = 0; column < 7; column++) {
-			Player currentPlayer = getCurrentPlayer(state);
-            if(state[row][column] == currentPlayer) { sum += evaluationTable[row][column]; }
-            else if(state[row][column] == Player::None) { break; }
-			else{ sum -= evaluationTable[row][column]; }
+int C4Bot::getScore(State board){
+    int score = 0;
+    // add individual scores
+    for (int y = 0; y < 6; ++y) {
+        for (int x = 0; x < 7; ++x) {
+            if (state[y][x] == currentPlayer) {
+                score++;
+            } else if (state[y][x] == otherPlayer) {
+                score--;
+            }
         }
     }
 
-    return sum;
+    // add winner scores
+    if (getWinner(state) == currentPlayer) {
+        score += 1000000;
+    } else if (getWinner(state) == otherPlayer) {
+        score -= 1000000;
+    }
+
+    // check 2 horizontal
+    for (int y = 0; y < 6; ++y) {
+        for (int x = 1; x < 7; ++x) {
+            if (state[y][x] == state[y][x - 1]) {
+                int multi = 0;
+                // check if its possible to win from these stones
+                if (x + 2 < 7 && state[y][x + 1] == Player::None && state[y][x + 2] == Player::None) {
+                    multi = 1;
+                }
+                if (x - 2 > 0 && x + 2 < 7 && state[y][x - 2] == Player::None && state[y][x + 1] == Player::None) {
+                    multi = 1;
+                }
+                if (x - 3 > 0 && state[y][x - 3] == Player::None && state[y][x - 2] == Player::None) {
+                    multi = 1;
+                }
+
+                if (state[y][x] == currentPlayer) {
+                    score += 100 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 100 * multi;
+                }
+            }
+        }
+    }
+
+    // check 3 horizontal
+    for (int y = 0; y < 6; ++y) {
+        for (int x = 0; x < 5; ++x) {
+            if (state[y][x] == state[y][x + 1] && state[y][x] == state[y][x + 2]) {
+                int multi = 0;
+
+                // check if its possible to win from these stones
+                if (x - 1 > 0 && state[y][x - 1] == Player::None) {
+                    multi = 1;
+                }
+                if (x + 3 < 5 && state[y][x + 3] == Player::None) {
+                    multi = 1;
+                }
+
+                if (state[y][x] == currentPlayer) {
+                    score += 10000 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 10000 * multi;
+                }
+            }
+        }
+    }
+
+    // check 2 vertical
+    for (int y = 5; y > 0; --y) {
+        for (int x = 0; x < 7; ++x) {
+            if (state[y][x] == state[y - 1][x]) {
+                int multi = 0;
+                if (y - 2 > 0) {
+                    if (state[y - 2][x] == Player::None) {
+                        multi = 1;
+                    }
+                }
+
+                if (state[y][x] == currentPlayer) {
+                    score += 100 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 100 * multi;
+                }
+            }
+        }
+    }
+
+    // check 3 vertical
+    for (int y = 5; y < 1; --y) {
+        for (int x = 0; x < 7; ++x) {
+            if (state[y][x] == state[y - 1][x] && state[y][x] == state[y - 2][x]) {
+                int multi = 0;
+                if (y - 3 > 0) {
+                    if (state[y - 3][x] == Player::None) {
+                        multi = 1;
+                    }
+                }
+
+                if (state[y][x] == currentPlayer) {
+                    score += 10000 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 10000 * multi;
+                }
+            }
+        }
+    }
+
+    // check 2 top left to bottom right
+    for (int y = 0; y < 3; ++y) {
+        for (int x = 0; x < 4; ++x) {
+            if (state[y][x] == state[y + 1][x + 1]) {
+                int multi = 0;
+                if (y - 2 > 0 && x - 2 > 0 && state[y - 2][x - 2] == Player::None &&
+                    state[y - 1][x - 1] == Player::None) {
+                    multi = 1;
+                }
+                if (y - 1 > 0 && x - 1 > 0 && state[y - 1][x - 1] == Player::None &&
+                    state[y + 2][x + 2] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y + 2][x + 2] == Player::None && state[y + 3][x + 3] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y][x] == currentPlayer) {
+                    score += 100 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 100 * multi;
+                }
+            }
+        }
+    }
+
+    // check 3 top left to bottom right
+    for (int y = 0; y < 3; ++y) {
+        for (int x = 0; x < 4; ++x) {
+            if (state[y][x] == state[y + 1][x + 1] && state[y][x] == state[y + 2][x + 2]) {
+                int multi = 0;
+                if (y - 1 > 0 && x - 1 > 0 && state[y - 1][x - 1] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y + 3][x + 3] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y][x] == currentPlayer) {
+                    score += 10000 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 10000 * multi;
+                }
+            }
+        }
+    }
+
+    // check 2 bottom left to top right
+    for (int y = 5; y > 3; --y) {
+        for (int x = 0; x < 4; ++x) {
+            if (state[y][x] == state[y - 1][x + 1]) {
+                int multi = 0;
+                if (y + 2 > 3 && x - 2 > 0 && state[y + 2][x - 2] == Player::None &&
+                    state[y + 1][x - 1] == Player::None) {
+                    multi = 1;
+                }
+                if (y + 1 > 3 && x - 1 > 0 && state[y + 1][x - 1] == Player::None &&
+                    state[y - 2][x + 2] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y - 2][x + 2] == Player::None && state[y - 3][x + 3] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y][x] == currentPlayer) {
+                    score += 100 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 100 * multi;
+                }
+            }
+        }
+    }
+
+    // check 3 bottom left to top right
+    for (int y = 5; y > 3; --y) {
+        for (int x = 0; x < 4; ++x) {
+            if (state[y][x] == state[y - 1][x + 1] && state[y][x] == state[y - 2][x + 2]) {
+                int multi = 0;
+                if (y + 1 > 3 && x - 1 > 0 && state[y + 1][x - 1] == Player::None) {
+                    multi = 1;
+                }
+                if (state[y - 3][x + 3] == Player::None) {
+                    multi = 1;
+                }
+
+                if (state[y][x] == currentPlayer) {
+                    score += 10000 * multi;
+                } else if (state[y][x] == otherPlayer) {
+                    score -= 10000 * multi;
+                }
+            }
+        }
+    }
+    
+    return score;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {

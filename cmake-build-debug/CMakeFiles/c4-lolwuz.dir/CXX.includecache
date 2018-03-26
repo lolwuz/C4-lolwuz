@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp
 c4.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 array
 -
 vector
@@ -24,25 +24,27 @@ iterator
 iostream
 -
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp
 c4bot.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
 iostream
 -
 sstream
 -
 list
 -
+climits
+-
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
 string
 -
 vector
 -
 c4.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp
 c4bot.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
 

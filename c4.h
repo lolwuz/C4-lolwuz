@@ -12,15 +12,7 @@
 #include <iostream>
 
 enum class Player { None, X, O };
-class Move{
-    int column;
-    int score;
-public:
-    int getColumn() const { return column; }
-    int getScore() const { return score; }
-    void setColumn(int col)  { column = col; }
-    void setScore(int s)  { score = s; }
-};
+using Move = std::pair<int, int>;
 using State = std::array<std::array<Player,7>,6>;
 
 // used to get a random element from a container
@@ -41,8 +33,10 @@ Iter select_randomly(Iter start, Iter end) {
 std::ostream &operator<<(std::ostream& os, const Player &p);
 std::ostream &operator<<(std::ostream& os, const State &s);
 Player getCurrentPlayer(const State &state);
-State doMove(const State &state, int &column);
+void doMove(State &state, int &column);
+void undoMove(State &state, Move lastMove);
 Player getWinner(const State &state);
+Player getOtherPlayer(Player me);
 std::vector<Move> getMoves(const State &state);
 
 #endif // C4_H

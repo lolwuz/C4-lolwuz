@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/c4-lolwuz.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/c4-lolwuz.dir/flags.make
 
 CMakeFiles/c4-lolwuz.dir/main.cpp.o: CMakeFiles/c4-lolwuz.dir/flags.make
 CMakeFiles/c4-lolwuz.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/c4-lolwuz.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/c4-lolwuz.dir/main.cpp.o -c /Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/c4-lolwuz.dir/main.cpp.o"
+	/cygdrive/c/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/c4-lolwuz.dir/main.cpp.o -c /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp
 
 CMakeFiles/c4-lolwuz.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/c4-lolwuz.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp > CMakeFiles/c4-lolwuz.dir/main.cpp.i
+	/cygdrive/c/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp > CMakeFiles/c4-lolwuz.dir/main.cpp.i
 
 CMakeFiles/c4-lolwuz.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/c4-lolwuz.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp -o CMakeFiles/c4-lolwuz.dir/main.cpp.s
+	/cygdrive/c/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp -o CMakeFiles/c4-lolwuz.dir/main.cpp.s
 
 CMakeFiles/c4-lolwuz.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/c4-lolwuz.dir/main.cpp.o.provides.build: CMakeFiles/c4-lolwuz.dir/mai
 
 CMakeFiles/c4-lolwuz.dir/c4.cpp.o: CMakeFiles/c4-lolwuz.dir/flags.make
 CMakeFiles/c4-lolwuz.dir/c4.cpp.o: ../c4.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/c4-lolwuz.dir/c4.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/c4-lolwuz.dir/c4.cpp.o -c /Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/c4-lolwuz.dir/c4.cpp.o"
+	/cygdrive/c/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/c4-lolwuz.dir/c4.cpp.o -c /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp
 
 CMakeFiles/c4-lolwuz.dir/c4.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/c4-lolwuz.dir/c4.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp > CMakeFiles/c4-lolwuz.dir/c4.cpp.i
+	/cygdrive/c/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp > CMakeFiles/c4-lolwuz.dir/c4.cpp.i
 
 CMakeFiles/c4-lolwuz.dir/c4.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/c4-lolwuz.dir/c4.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp -o CMakeFiles/c4-lolwuz.dir/c4.cpp.s
+	/cygdrive/c/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp -o CMakeFiles/c4-lolwuz.dir/c4.cpp.s
 
 CMakeFiles/c4-lolwuz.dir/c4.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/c4-lolwuz.dir/c4.cpp.o.provides.build: CMakeFiles/c4-lolwuz.dir/c4.cp
 
 CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o: CMakeFiles/c4-lolwuz.dir/flags.make
 CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o: ../c4bot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o -c /Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o"
+	/cygdrive/c/cygwin64/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o -c /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp
 
 CMakeFiles/c4-lolwuz.dir/c4bot.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/c4-lolwuz.dir/c4bot.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp > CMakeFiles/c4-lolwuz.dir/c4bot.cpp.i
+	/cygdrive/c/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp > CMakeFiles/c4-lolwuz.dir/c4bot.cpp.i
 
 CMakeFiles/c4-lolwuz.dir/c4bot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/c4-lolwuz.dir/c4bot.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp -o CMakeFiles/c4-lolwuz.dir/c4bot.cpp.s
+	/cygdrive/c/cygwin64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp -o CMakeFiles/c4-lolwuz.dir/c4bot.cpp.s
 
 CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o.requires:
 
@@ -138,16 +138,16 @@ c4__lolwuz_OBJECTS = \
 # External object files for target c4-lolwuz
 c4__lolwuz_EXTERNAL_OBJECTS =
 
-c4-lolwuz: CMakeFiles/c4-lolwuz.dir/main.cpp.o
-c4-lolwuz: CMakeFiles/c4-lolwuz.dir/c4.cpp.o
-c4-lolwuz: CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o
-c4-lolwuz: CMakeFiles/c4-lolwuz.dir/build.make
-c4-lolwuz: CMakeFiles/c4-lolwuz.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable c4-lolwuz"
+c4-lolwuz.exe: CMakeFiles/c4-lolwuz.dir/main.cpp.o
+c4-lolwuz.exe: CMakeFiles/c4-lolwuz.dir/c4.cpp.o
+c4-lolwuz.exe: CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o
+c4-lolwuz.exe: CMakeFiles/c4-lolwuz.dir/build.make
+c4-lolwuz.exe: CMakeFiles/c4-lolwuz.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable c4-lolwuz.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/c4-lolwuz.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/c4-lolwuz.dir/build: c4-lolwuz
+CMakeFiles/c4-lolwuz.dir/build: c4-lolwuz.exe
 
 .PHONY : CMakeFiles/c4-lolwuz.dir/build
 
@@ -162,6 +162,6 @@ CMakeFiles/c4-lolwuz.dir/clean:
 .PHONY : CMakeFiles/c4-lolwuz.dir/clean
 
 CMakeFiles/c4-lolwuz.dir/depend:
-	cd /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/lolwuz/Documents/GitHub/C4-lolwuz /Users/lolwuz/Documents/GitHub/C4-lolwuz /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/c4-lolwuz.dir/depend
 

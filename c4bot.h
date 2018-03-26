@@ -17,6 +17,9 @@ class C4Bot {
     int your_botid;
     int field_columns;
     int field_rows;
+    Player currentPlayer;
+    Player otherPlayer;
+    Move lastMove;
 
     int i = 0;
 
@@ -25,15 +28,9 @@ class C4Bot {
 
     std::vector<std::string> split(const std::string &s, char delim);
 
-    /*
-     * Function determines the best move by minimax.
-     * https://nl.wikipedia.org/wiki/Minimax
-     */
-    Move minimax(State state, int depth);
+    std::pair<int, int> negamax(int depth, int a, int b, int sign);
 
-    Move minSearch(State state, int depth);
-
-    int getScore(State state);
+    int getScore(State board);
 
     void setting(std::string &key, std::string &value);
 

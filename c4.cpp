@@ -37,17 +37,24 @@ Player getCurrentPlayer(const State &state)
     return (countX > countO ? Player::O : Player::X); 
 }
 
-State doMove(const State &state, int &column)
+void doMove(State &state, int &column)
 {
-    State result = state;
-
 	for (int rows=0; rows<6; rows++) {
-		if (rows == 5 || result[rows+1][column] == Player::None) {
-		    result[rows][column] = getCurrentPlayer(state);
-    		return result;
+		if (rows == 5 || state[rows+1][column] == Player::None) {
+		    state[rows][column] = getCurrentPlayer(state);
+            Move lastMove = Move(column, 0);
 		}
 	}
-    return result; // Invalid move
+}
+
+void undoMove(State &state, Move lastMove){
+    for(int rows = 0; rows < 6; rows++){
+        if(state[rows][lastMove.first] == Player::None){
+            state[rows - 1][lastMove.first] = Player::None;
+        }
+        if(rows == 5)
+            state[rows][lastMove.first] = Player::None;
+    }
 }
 
 Player getWinner(const State &state)
@@ -76,6 +83,27 @@ Player getWinner(const State &state)
 		}
 	}
     return Player::None;
+}
+
+std::vector<Move> getMoves(const State &state) {
+    std::vector<Move> moves;
+    if (getWinner(state) == Player::None){
+        for (int i = 0; i < 7; i++){
+            if (state[0][i] == Player::None) {
+                std::pair<int, int> pair = std::pair<int, int>(i, 0);
+                moves.push_back(pair);
+            }
+        }
+    }
+
+    return moves;
+}
+
+Player getOtherPlayer(Player me){
+    if(me == Player::X)
+        return Player::O;
+    else
+        return Player::X;
 }
 
 
