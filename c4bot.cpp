@@ -33,18 +33,17 @@ void C4Bot::move(int timeout) {
 
 	// std::vector<Move> moves = getMoves(state);
 
-    Move move;
-    if(currentPlayer == Player::X)
-        move = negamax(state, 6, 1);
-    else
-        move = negamax(state, 6, -1);
-
-    std::cout << "place_disc " << move.first << std::endl;
+    if(currentPlayer == Player::X) {
+        std::cout << "place_disc " << negamax(state, 6, 1).first << std::endl;
+    }
+    else {
+        std::cout << "place_disc " << negamax(state, 6, -1).first << std::endl;
+    }
 }
 
 Move C4Bot::negamax(State board, int depth, int color){
     if(depth <= 0 || getWinner(board) != Player::None){
-        return { -1, color * getScore(board, color)};
+        return { -1, color * eval(board, color)};
     }
 
     int bestMove = -1;
@@ -53,9 +52,6 @@ Move C4Bot::negamax(State board, int depth, int color){
     for(Move move:getMoves(state)){
         int nextScore = -negamax(doMove(board, move.first), depth - 1, -color).second;
 
-        if(move.first == 6){
-            // Debug
-        }
         if(nextScore >= bestScore) {
             bestScore = nextScore;
             bestMove = move.first;
@@ -65,69 +61,72 @@ Move C4Bot::negamax(State board, int depth, int color){
     return Move{bestMove, bestScore};
 }
 
-int C4Bot::getScore(State board, int color){
-    int evaluationTable[6][7] = {
-		{3, 4, 5, 7, 5, 4, 3},
-		{4, 6, 8, 10, 8, 6, 4},
-		{5, 8, 11, 13, 11, 8, 5},
-		{5, 8, 11, 13, 11, 8, 5},
-		{4, 6, 8, 10, 8, 6, 4},
-		{3, 4, 5, 7, 5, 4, 3}
-	};
-
-
-	Player checkPlayer;
-	if(color == 1)
-		checkPlayer = Player::X;
-	else
-		checkPlayer = Player::O;
+int C4Bot::eval(State board, int color) {
+    Player checkPlayer;
+    if(color == 1)
+        checkPlayer = Player::X;
+    else
+        checkPlayer = Player::O;
 
     int sum = 0;
-    for (int rows = 0; rows < 6; rows++) {
-		for (int columns = 0; columns < 7; columns++) {
-			if (board[rows][columns] == checkPlayer) {
-				sum += evaluationTable[rows][columns];
 
-				for (int next = 0; next < 4; next++) {
-					if (!isOutOfBounds(rows - next, columns))
-						if (board[rows - next][columns] == checkPlayer) // Down
-							sum += evaluationTable[rows - next][columns] * evaluationTable[rows][columns];
-					if(!isOutOfBounds(rows + next, columns))
-						if (board[rows + next][columns] == checkPlayer) // Up
-							sum += evaluationTable[rows + next][columns] * evaluationTable[rows][columns];
+    if(getWinner(board) == checkPlayer){
+        return INT_MAX;
+    }
 
-					if(!isOutOfBounds(rows + next, columns + next))
-						if (board[rows + next][columns + next] == checkPlayer) // Dia 1
-							sum += evaluationTable[rows + next][columns + next] * evaluationTable[rows][columns];
+    int points = 0;
+    int verticalPoints = 0;
+    int horizontalPoints = 0;
+    int diagonalPoints1 = 0;
+    int diagonalPoints2 = 0;
 
-					if(!isOutOfBounds(rows - next, columns - next))
-						if (board[rows - next][columns - next] == checkPlayer) // Dia 2
-							sum += evaluationTable[rows - next][columns - next] * evaluationTable[rows][columns];
+    // Vertical
+    for(int row = 0; row < field_rows - 3; row++){
+        for(int column = 0; column < field_columns; column++){
+            int score = scorePosition(checkPlayer, board, row, column, 1, 0);
+            verticalPoints += score;
+        }
+    }
 
-					if(!isOutOfBounds(rows, columns - next))
-						if (board[rows][columns - next] == checkPlayer) // Left
-							sum += evaluationTable[rows][columns - next] * evaluationTable[rows][columns];
+    // Horizontal
+    for(int row = 0; row < field_rows; row++){
+        for(int column = 0; column < field_columns - 3; column++){
+            int score = scorePosition(checkPlayer, board, row, column, 0, 1);
+            horizontalPoints += score;
+        }
+    }
 
-					if(!isOutOfBounds(rows, columns + next))
-						if (board[rows][columns + next] == checkPlayer) // Right
-							sum += evaluationTable[rows][columns + next] * evaluationTable[rows][columns];
-				}
-			}
-		}
-	}
-    return sum;
+    // Diagonal 1
+    for(int row = 0; row < field_rows - 3; row++){
+        for(int column = 0; column < field_columns - 3; column++){
+            int score = scorePosition(checkPlayer, board, row, column, 1, 1);
+            diagonalPoints1 += score;
+        }
+    }
+
+    // Diagonal 2
+    for(int row = 3; row < field_rows; row++){
+        for(int column = 0; column < field_columns - 3; column++){
+            int score = scorePosition(checkPlayer, board, row, column, -1, 1);
+            diagonalPoints2 += score;
+        }
+    }
+
+    points = diagonalPoints1 + diagonalPoints2 + horizontalPoints + verticalPoints;
+    return points;
 }
 
-bool C4Bot::isOutOfBounds(int row, int col){
-	if(row < 0)
-		return true;
-	if(row > 5)
-		return true;
-	if(col < 0)
-		return true;
-	if(col > 6)
-		return true;
-	return false;
+int C4Bot::scorePosition(Player currentPlayer, State board, int row, int column, int y, int x) {
+    int points = 0;
+
+    for (int i = 0; i < 4; i++) {
+        if (board[row][column] == currentPlayer){
+            points++;
+        }
+        row += y;
+        column += x;
+    }
+    return points;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {
@@ -167,9 +166,9 @@ void C4Bot::setting(std::string &key, std::string &value) {
 		your_bot = value;
 	} else if (key == "your_botid") {
 		your_botid = std::stoi(value);
-	} else if (key == "field_columns") {
+	} else if (key == "field_width") {
 		field_columns = std::stoi(value);
-	} else if (key == "field_rows") {
+	} else if (key == "field_height") {
 		field_rows = std::stoi(value);
 	}
 }
