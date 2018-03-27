@@ -30,90 +30,71 @@ void C4Bot::move(int timeout) {
     otherPlayer = getOtherPlayer(currentPlayer);
 
 	// Do something more intelligent here instead of returning a random move
+    if(currentPlayer == Player::X)
+        std::cout << "place_disc " << negamax(state, 9, -INT_MAX, INT_MAX, 1).first << std::endl;
+    else
+        std::cout << "place_disc " << negamax(state, 9, -INT_MAX, INT_MAX, -1).first << std::endl;
 
-	// std::vector<Move> moves = getMoves(state);
 
-    if(currentPlayer == Player::X) {
-        std::cout << "place_disc " << negamax(state, 6, 1).first << std::endl;
-    }
-    else {
-        std::cout << "place_disc " << negamax(state, 6, -1).first << std::endl;
-    }
 }
 
-Move C4Bot::negamax(State board, int depth, int color){
-    if(depth <= 0 || getWinner(board) != Player::None){
-        return { -1, color * eval(board, color)};
+Move C4Bot::negamax(State board, int depth, int alpha, int beta, int color){
+    if(depth == 0 || getWinner(board) != Player::None){
+        return Move {-1 ,color * eval(board, color)};
     }
 
+    int bestValue = INT_MIN;
     int bestMove = -1;
-    int bestScore = INT_MIN;
 
     for(Move move:getMoves(state)){
-        int nextScore = -negamax(doMove(board, move.first), depth - 1, -color).second;
+        int value = -negamax(doMove(board, move.first), depth - 1, - beta, - alpha, - color).second;
 
-        if(nextScore >= bestScore) {
-            bestScore = nextScore;
+        if(value > bestValue){
             bestMove = move.first;
+            bestValue = value;
         }
-    }
 
-    return Move{bestMove, bestScore};
+        if(value > alpha) {
+            bestMove = move.first;
+            alpha = value;
+        }
+
+        if(alpha >= beta)
+            break;
+    } return Move{bestMove, bestValue};
 }
 
 int C4Bot::eval(State board, int color) {
-    Player checkPlayer;
-    if(color == 1)
-        checkPlayer = Player::X;
-    else
-        checkPlayer = Player::O;
+    int evaluationTable[6][7] = {{3, 4, 5, 7, 5, 4, 3},
+                                 {4, 6, 8, 10, 8, 6, 4},
+                                 {5, 8, 11, 13, 11, 8, 5},
+                                 {5, 8, 11, 13, 11, 8, 5},
+                                 {4, 6, 8, 10, 8, 6, 4},
+                                 {3, 4, 5, 7, 5, 4, 3}};
 
-    int sum = 0;
 
-    if(getWinner(board) == checkPlayer){
-        return INT_MAX;
+    if(color == 1){
+        currentPlayer = Player::X;
+    } else {
+        currentPlayer = Player::O;
     }
 
-    int points = 0;
-    int verticalPoints = 0;
-    int horizontalPoints = 0;
-    int diagonalPoints1 = 0;
-    int diagonalPoints2 = 0;
 
-    // Vertical
-    for(int row = 0; row < field_rows - 3; row++){
-        for(int column = 0; column < field_columns; column++){
-            int score = scorePosition(checkPlayer, board, row, column, 1, 0);
-            verticalPoints += score;
-        }
-    }
+    int score = 0;
+    for (int i = 0; i < 6; i++)
+        for (int j = 0; j < 7; j++)
+            if (board[i][j] == currentPlayer) {
+                int innerScore;
+                // Check vertical
+                score += evaluationTable[i][j];
+            }
+            else if(board[i][j] == Player::None){
+                break;
+            }
+            else
+                score -= evaluationTable[i][j];
 
-    // Horizontal
-    for(int row = 0; row < field_rows; row++){
-        for(int column = 0; column < field_columns - 3; column++){
-            int score = scorePosition(checkPlayer, board, row, column, 0, 1);
-            horizontalPoints += score;
-        }
-    }
-
-    // Diagonal 1
-    for(int row = 0; row < field_rows - 3; row++){
-        for(int column = 0; column < field_columns - 3; column++){
-            int score = scorePosition(checkPlayer, board, row, column, 1, 1);
-            diagonalPoints1 += score;
-        }
-    }
-
-    // Diagonal 2
-    for(int row = 3; row < field_rows; row++){
-        for(int column = 0; column < field_columns - 3; column++){
-            int score = scorePosition(checkPlayer, board, row, column, -1, 1);
-            diagonalPoints2 += score;
-        }
-    }
-
-    points = diagonalPoints1 + diagonalPoints2 + horizontalPoints + verticalPoints;
-    return points;
+    return score;
 }
 
 int C4Bot::scorePosition(Player currentPlayer, State board, int row, int column, int y, int x) {
