@@ -21,6 +21,13 @@ class C4Bot {
     Player currentPlayer;
     Player otherPlayer;
 
+    int evaluationTable[6][7] = {{3, 4, 5, 7, 5, 4, 3},
+                                 {4, 6, 8, 10, 8, 6, 4},
+                                 {5, 8, 11, 13, 11, 8, 5},
+                                 {5, 8, 11, 13, 11, 8, 5},
+                                 {4, 6, 8, 10, 8, 6, 4},
+                                 {3, 4, 5, 7, 5, 4, 3}};
+
 
     State state = {{{{Player::None}}}};
 
@@ -32,7 +39,7 @@ class C4Bot {
 
     int scorePosition(Player currentPlayer, State board, int row, int column, int y, int x);
 
-    bool isOutOfBounds(int row, int color);
+    bool isOutOfBounds(const int &row, const int &column);
 
     void setting(std::string &key, std::string &value);
 

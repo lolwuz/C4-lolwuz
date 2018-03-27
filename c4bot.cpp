@@ -65,49 +65,79 @@ Move C4Bot::negamax(State board, int depth, int alpha, int beta, int color){
 }
 
 int C4Bot::eval(State board, int color) {
-    int evaluationTable[6][7] = {{3, 4, 5, 7, 5, 4, 3},
-                                 {4, 6, 8, 10, 8, 6, 4},
-                                 {5, 8, 11, 13, 11, 8, 5},
-                                 {5, 8, 11, 13, 11, 8, 5},
-                                 {4, 6, 8, 10, 8, 6, 4},
-                                 {3, 4, 5, 7, 5, 4, 3}};
-
-
+    Player player;
     if(color == 1){
-        currentPlayer = Player::X;
+        player = Player::O;
     } else {
-        currentPlayer = Player::O;
+        player = Player::X;
     }
 
 
     int score = 0;
-    for (int i = 0; i < 6; i++)
-        for (int j = 0; j < 7; j++)
-            if (board[i][j] == currentPlayer) {
-                int innerScore;
-                // Check vertical
-                score += evaluationTable[i][j];
-            }
-            else if(board[i][j] == Player::None){
+    for (int row = 0; row < 6; row++) {
+        for (int column = 0; column < 7; column++) {
+            if (board[row][column] == player) {
+                // Dia 1
+                score += scorePosition(player, board, row, column, 1, 1);
+
+                // Dia 2
+                score += scorePosition(player, board, row, column, -1, -1);
+
+                // Horizontal
+                score += scorePosition(player, board, row, column, 0, 1);
+                score += scorePosition(player, board, row, column, 0, -1);
+
+                // Vertical
+                score += scorePosition(player, board, row, column, 1, 0);
+                score += scorePosition(player, board, row, column, -1, 0);
+
+            } else if (board[row][column] == Player::None)
                 break;
+            else {
+                // Dia 1
+                score -= scorePosition(player, board, row, column, 1, 1);
+
+                // Dia 2
+                score -= scorePosition(player, board, row, column, -1, -1);
+
+                // Horizontal
+                score -= scorePosition(player, board, row, column, 0, 1);
+                score -= scorePosition(player, board, row, column, 0, -1);
+
+                // Vertical
+                score -= scorePosition(player, board, row, column, 1, 0);
+                score -= scorePosition(player, board, row, column, -1, 0);
             }
-            else
-                score -= evaluationTable[i][j];
+        }
+    }
 
     return score;
 }
 
-int C4Bot::scorePosition(Player currentPlayer, State board, int row, int column, int y, int x) {
+int C4Bot::scorePosition(Player player, State board, int row, int column, int y, int x) {
     int points = 0;
+    points += evaluationTable[row][column];
 
     for (int i = 0; i < 4; i++) {
-        if (board[row][column] == currentPlayer){
-            points++;
+        if(!isOutOfBounds(row, column)){
+            if (board[row][column] == player){
+                points = points * evaluationTable[row][column];
+            }
+            row += y;
+            column += x;
         }
-        row += y;
-        column += x;
     }
     return points;
+}
+
+bool C4Bot::isOutOfBounds(const int &row, const int &column){
+    if(row < 0)
+        return true;
+    else if(row > 5)
+        return true;
+    else if(column > 6)
+        return true;
+    else return column < 0;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {
