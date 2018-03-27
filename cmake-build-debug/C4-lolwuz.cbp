@@ -8,96 +8,94 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="c4-lolwuz">
-				<Option output="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/c4-lolwuz" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/c4-lolwuz.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 c4-lolwuz"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 c4-lolwuz"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="c4-lolwuz/fast">
-				<Option output="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/c4-lolwuz" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/c4-lolwuz.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 c4-lolwuz/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 c4-lolwuz/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp">
+		<Unit filename="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp">
 			<Option target="c4-lolwuz"/>
 		</Unit>
-		<Unit filename="/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h">
+		<Unit filename="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h">
 			<Option target="c4-lolwuz"/>
 		</Unit>
-		<Unit filename="/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp">
+		<Unit filename="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp">
 			<Option target="c4-lolwuz"/>
 		</Unit>
-		<Unit filename="/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h">
+		<Unit filename="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h">
 			<Option target="c4-lolwuz"/>
 		</Unit>
-		<Unit filename="/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp">
+		<Unit filename="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp">
 			<Option target="c4-lolwuz"/>
 		</Unit>
-		<Unit filename="/Users/lolwuz/Documents/GitHub/C4-lolwuz/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
