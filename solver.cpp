@@ -30,6 +30,10 @@ Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const 
     } return Move{bestMove, bestValue};
 }
 
+bool Solver::isZugZwang(const State &board, const int &color){
+
+}
+
 int Solver::evaluationBoard(const State &board, const int &color){
     int score = 0;
     Player player;

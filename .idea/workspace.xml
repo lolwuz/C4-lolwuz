@@ -12,12 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76f23f7c-0739-4c4b-a2e2-60e8f19b4271" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/c4bot.cpp" afterPath="$PROJECT_DIR$/c4bot.cpp" />
-      <change beforePath="$PROJECT_DIR$/c4bot.h" afterPath="$PROJECT_DIR$/c4bot.h" />
+      <change beforePath="$PROJECT_DIR$/Archive.zip" afterPath="$PROJECT_DIR$/Archive.zip" />
       <change beforePath="$PROJECT_DIR$/solver.cpp" afterPath="$PROJECT_DIR$/solver.cpp" />
-      <change beforePath="$PROJECT_DIR$/solver.h" afterPath="$PROJECT_DIR$/solver.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="solver.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="solver.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state relative-caret-position="177">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#41#59#0" expanded="true" />
               </folding>
@@ -76,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="c4.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="c4.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/c4.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="89" column="18" lean-forward="false" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+            <state relative-caret-position="49">
+              <caret line="69" column="23" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -274,12 +271,12 @@
       <workItem from="1522229639250" duration="177000" />
       <workItem from="1522229835348" duration="2723000" />
       <workItem from="1522233795592" duration="257000" />
-      <workItem from="1522234153126" duration="7447000" />
+      <workItem from="1522234153126" duration="7797000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112877000" />
+    <option name="totallyTimeSpent" value="113227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -599,16 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c4bot.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
-          <folding>
-            <element signature="e#38#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/c4bot.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -627,21 +614,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c4.cpp">
+    <entry file="file://$PROJECT_DIR$/c4bot.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="89" column="18" lean-forward="false" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="326">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <folding>
+            <element signature="e#38#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/solver.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        <state relative-caret-position="177">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c4.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="69" column="23" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
