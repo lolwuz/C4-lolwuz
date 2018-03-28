@@ -33,14 +33,6 @@ class C4Bot {
 
     std::vector<std::string> split(const std::string &s, char delim);
 
-    Move negamax(State board, int depth, int alpha, int beta, const int &color);
-
-    int eval(const State &board, const int &color);
-
-    int scorePosition(Player currentPlayer, State board, int row, int column, int y, int x);
-
-    bool isOutOfBounds(const int &row, const int &column);
-
     void setting(std::string &key, std::string &value);
 
     void update(std::string &key, std::string &value);
