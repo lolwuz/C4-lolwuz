@@ -5,9 +5,9 @@
 #include "c4.h"
 #include "solver.h"
 
-Move negamax(State board, int depth, int alpha, int beta, const int &color){
+Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const int &color){
     if(depth == 0 || getWinner(board) != Player::None){
-        return Move {-1 , evaluation(board, color)};
+        return Move { -1, evaluation(board, color)};
     }
 
     int bestValue = -INT_MAX;
@@ -30,23 +30,47 @@ Move negamax(State board, int depth, int alpha, int beta, const int &color){
     } return Move{bestMove, bestValue};
 }
 
-int evaluationBoard(const State &board, const int &color){
+int Solver::evaluationBoard(const State &board, const int &color){
+    int score = 0;
     Player player;
     if(color == 1)
         player = Player::X;
     else
         player = Player::O;
 
+    if(getWinner(board) == player)
+        return INT_MAX;
+
+
     for(int row = 0; row < 6; row++){
         for(int column = 0; column < 6; column++){
-            if(board[row][column] == player)
-                return 0;
+            if(board[row][column] == player) {
+                score += getPositionScore(board, player, row, column);
+            }
         }
     }
+
+    return score;
+}
+
+int Solver::getPositionScore(const State &board, const Player &player, const int &row, const int &column){
+    int score = 1;
+
+    return score;
+}
+
+bool Solver::isOutOfBounds(const int &row, const int &column){
+    if(row < 0)
+        return true;
+    if(row > 5)
+        return true;
+    if(column < 0)
+        return true;
+    return column > 6;
 }
 
 
-int evaluation(const State &board, const int &color) {
+int Solver::evaluation(const State &board, const int &color) {
     Player player;
     if(color == 1)
         player = Player::X;
@@ -58,9 +82,9 @@ int evaluation(const State &board, const int &color) {
     for (int y = 0; y < 6; ++y) {
         for (int x = 0; x < 7; ++x) {
             if (board[y][x] == player) {
-                score++;
+                score+= evaluationTable[y][x];
             } else if (board[y][x] == getOtherPlayer(player)) {
-                score--;
+                score-= evaluationTable[y][x];
             }
         }
     }
@@ -252,4 +276,21 @@ int evaluation(const State &board, const int &color) {
     }
 
     return score;
+}
+
+int Solver::getMove(State board, const int &round, const Player &currentPlayer, const int &depth) {
+    int column = 0; // Middle column
+
+    if(round < 2)
+        column = 3;
+    else
+        if (currentPlayer == Player::X)
+            column = negamax(board, depth, -INT64_MAX, INT64_MAX, 1).first;
+        else // Playing as Player O
+            column = negamax(board, depth, -INT64_MAX, INT64_MAX, -1).first;
+
+    if(column == -1)
+        return getMoves(board).front().first;
+    else
+        return column;
 }

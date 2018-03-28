@@ -27,18 +27,10 @@ void C4Bot::run() {
 void C4Bot::move(int timeout) {
 
     currentPlayer = getCurrentPlayer(state);
-    otherPlayer = getOtherPlayer(currentPlayer);
 
-	// Do something more intelligent here instead of returning a random move
+	std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 8) << std::endl;
 
 
-    if(round < 2)
-        std::cout << "place_disc " << 3 << std::endl;
-    else
-        if(currentPlayer == Player::X)
-            std::cout << "place_disc " << negamax(state, 8, -INT_MAX, INT_MAX, 1).first << std::endl;
-        else
-            std::cout << "place_disc " << negamax(state, 8, -INT_MAX, INT_MAX, -1).first << std::endl;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {

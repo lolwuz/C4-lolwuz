@@ -8,8 +8,11 @@
 #include <vector>
 
 #include "c4.h"
+#include "solver.h"
 
 class C4Bot {
+    Solver solver;
+
     int timebank;
     int time_per_move;
     std::string player_names[2];
@@ -19,15 +22,6 @@ class C4Bot {
     int field_rows;
     int round;
     Player currentPlayer;
-    Player otherPlayer;
-
-    int evaluationTable[6][7] = {{3, 4, 5, 7, 5, 4, 3},
-                                 {4, 6, 8, 10, 8, 6, 4},
-                                 {5, 8, 11, 13, 11, 8, 5},
-                                 {5, 8, 11, 13, 11, 8, 5},
-                                 {4, 6, 8, 10, 8, 6, 4},
-                                 {3, 4, 5, 7, 5, 4, 3}};
-
 
     State state = {{{{Player::None}}}};
 
