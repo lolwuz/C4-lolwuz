@@ -43,6 +43,8 @@ private:
 
     bool isOutOfBounds(const int &row, const int &column);
 
+    bool isZugzwang(const State &board, const Player &player);
+
 public:
     /*
      * returns a int that represent a move (column number)

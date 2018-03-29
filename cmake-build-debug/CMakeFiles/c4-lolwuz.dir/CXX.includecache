@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.cpp
 c4.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 array
 -
 vector
@@ -24,11 +24,11 @@ iterator
 iostream
 -
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.cpp
 c4bot.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
 solver.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
 sstream
 -
 list
@@ -36,37 +36,39 @@ list
 climits
 -
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
 string
 -
 vector
 -
 c4.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 solver.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/main.cpp
 c4bot.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4bot.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.cpp
 climits
 -
+list
+-
 c4.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 solver.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/solver.h
 array
 -
 c4.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/c4.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/transposition.cpp
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/transposition.cpp
 transposition.h
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/transposition.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/transposition.h
 
-/Users/lolwuz/Documents/GitHub/C4-lolwuz/transposition.h
+/cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/transposition.h
 

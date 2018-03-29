@@ -2,6 +2,7 @@
 // Created by lolwuz on 27-Mar-18.
 //
 #include <climits>
+#include <list>
 #include "c4.h"
 #include "solver.h"
 
@@ -30,8 +31,68 @@ Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const 
     } return Move{bestMove, bestValue};
 }
 
-bool Solver::isZugZwang(const State &board, const int &color){
+bool Solver::isZugzwang(const State &board, const Player &player) {
+    Player otherPlayer = getOtherPlayer(player);
 
+    std::list<std::pair<int, int>> threatListPlayer; // Stores possible winning moves for the player
+    std::list<std::pair<int, int>> threatListOpponent; // Stores possible winning moves for the opponent
+    int emptySlots = 0; // Number of empty slots on the board
+
+    // Iterate trough the board to find winning connections (threats)
+    for(Move move: getMoves(board)){
+        State getBoard = doMove(board, move.first);
+        if(getWinner(getBoard) != Player::None){
+            for(int row = 0; row < 6; row++){
+                if(board[row][move.first] != Player::None){
+                    if(board[row][move.first] == player){
+                        threatListPlayer.push_front({row, move.first});
+                    } else {
+                        threatListOpponent.push_front({row, move.first});
+                    }
+                }
+            }
+        }
+    }
+
+    // Definition of zugzwang
+    bool isEven = emptySlots % 2 == 0; // Even amount of empty slots
+    int playerOddThreats = 0;
+    int opponentOddThreats = 0;
+
+    for (std::pair<int, int> threat : threatListPlayer) {
+        bool isThreatEven = (threat.first + 1) % 2 == 0; // Check if threat is in even row
+        // 1 Player X has an odd threat with no even threats from Player B
+        if(!isThreatEven){
+            // Checks opponents threats
+            for(std::pair<int, int> otherThreat : threatListOpponent){
+                bool isOpponentThreatEven = (otherThreat.first + 1) % 2 == 0;
+                // 3 Check if threat is in the same column.
+                if(otherThreat.second == threat.second){
+                    // 2 Check if no even threat below
+                    if(otherThreat.first > threat.first){
+                        playerOddThreats++;
+                        return !isOpponentThreatEven; // 4 And Player B had no odd threats in other columns
+                    }
+                }
+                // Check if B has no odd threats in other columns
+                else {
+                    if(!isOpponentThreatEven)
+                        return false;
+                }
+            }
+        }
+    }
+
+    for (std::pair<int, int> opponent : threatListOpponent) {
+        bool isThreatEven = (opponent.first + 1) % 2 == 0;
+
+        if(!isThreatEven)
+            opponentOddThreats++;
+    }
+    if(opponentOddThreats < playerOddThreats)
+        return true;
+
+    return false;
 }
 
 int Solver::evaluationBoard(const State &board, const int &color){
@@ -44,7 +105,6 @@ int Solver::evaluationBoard(const State &board, const int &color){
 
     if(getWinner(board) == player)
         return INT_MAX;
-
 
     for(int row = 0; row < 6; row++){
         for(int column = 0; column < 6; column++){
@@ -81,6 +141,8 @@ int Solver::evaluation(const State &board, const int &color) {
     else
         player = Player::O;
 
+
+
     int score = 0;
     // add individual scores
     for (int y = 0; y < 6; ++y) {
@@ -93,12 +155,21 @@ int Solver::evaluation(const State &board, const int &color) {
         }
     }
 
+    // Check for Zugzwang
+    if (isZugzwang(board, player)) {
+        score += 1000000;
+    }
+    if (isZugzwang(board, getOtherPlayer(player))){
+        score -= 1000000;
+    }
+
     // add winner scores
     if (getWinner(board) == player) {
         score += 1000000;
     } else if (getWinner(board) == getOtherPlayer(player)) {
         score -= 1000000;
     }
+
 
     // check 2 horizontal
     for (int y = 0; y < 6; ++y) {
