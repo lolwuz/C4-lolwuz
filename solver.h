@@ -56,6 +56,8 @@ public:
     int getMove(State board, const int &round, const Player &currentPlayer,const int &depth);
 
     State insertThreat(const State &board, const Player &player, const int &row, const int &column);
+
+    bool canConnect4(const State &board, const int &row, const int &column);
 };
 
 #endif //C4_LOLWUZ_SOLVER_H
