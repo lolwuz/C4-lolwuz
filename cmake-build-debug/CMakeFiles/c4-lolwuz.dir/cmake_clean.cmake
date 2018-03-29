@@ -5,8 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/c4-lolwuz.dir/solver.cpp.o"
   "CMakeFiles/c4-lolwuz.dir/transposition.cpp.o"
   "c4-lolwuz.pdb"
-  "c4-lolwuz.exe"
-  "libc4-lolwuz.dll.a"
+  "c4-lolwuz"
 )
 
 # Per-language clean rules from dependency scanning.

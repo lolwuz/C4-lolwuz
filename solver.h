@@ -9,6 +9,9 @@
 #include <array>
 #include "c4.h"
 
+using Threats = std::vector<std::pair<int, int>>;
+using Threat = std::pair<int, int>;
+
 
 class Solver {
     int evaluationTable[6][7] =
@@ -35,21 +38,24 @@ private:
     int evaluation(const State &board, const int &color);
 
     /*
-     * Test eval
+     * Find zugzwang board
      */
-    int evaluationBoard(const State &board, const int &color);
-
-    int getPositionScore(const State &board, const Player &player, const int &row, const int &column);
-
-    bool isOutOfBounds(const int &row, const int &column);
-
     bool isZugzwang(const State &board, const Player &player);
+
+    /*
+     * Look for possible threats
+     */
+    Threats getThreats(const State &board, const Player &player);
+
+    int boundCheck(const State &board, const Player &player, const int &row, const int &column);
 
 public:
     /*
      * returns a int that represent a move (column number)
      */
     int getMove(State board, const int &round, const Player &currentPlayer,const int &depth);
+
+    State insertThreat(const State &board, const Player &player, const int &row, const int &column);
 };
 
 #endif //C4_LOLWUZ_SOLVER_H
