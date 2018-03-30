@@ -12,6 +12,16 @@
 using Threats = std::vector<std::pair<int, int>>;
 using Threat = std::pair<int, int>;
 
+struct Point {
+private:
+    int x;
+    int y;
+public:
+    Point(int row, int column){
+        x = row;
+        y = column;
+    }
+};
 
 class Solver {
     int evaluationTable[6][7] =

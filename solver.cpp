@@ -122,61 +122,71 @@ int Solver::boundCheck(const State &board, const Player &player, const int &row,
 }
 
 int Solver::evaluation(const State &board, const int &color) {
-    Player player;
-    if (color == 1)
-        player = Player::X;
-    else
-        player = Player::O;
-
 
     int score = 0;
 
+    Player player;
+    Player opponent;
 
-    // add winner scores
-    if (getWinner(board) == player) {
-        score += 1000000;
-    }
+    if(color == 1){ player = Player::X; opponent = Player::O; }
+    else { player = Player::O; opponent = Player::X;}
+
+    std::vector<Point> playerThreats;
+    std::vector<Point> opponentThreats;
 
     for (int r = 0; r < 6; r++) {
         for (int c = 0; c < 7; c++) {
-            bool isConnect1 = false;
-            bool isConnect2 = false;
-            bool isConnect3 = false;
+            bool isPlayerThreat = false;
+            bool isOpponentThreat = false;
+            if(board[r][c] == Player::None){
 
-            bool isPossibleWin = false;
+                // Check left
+                if(board[r][c - 1] == board[r][c - 2] && board[r][c - 2] == board[r][c - 3])
+                    if(board[r][c - 1] == player)
+                        isPlayerThreat = true;
+                    else if(board[r][c - 1] == opponent)
+                        isOpponentThreat = true;
 
-            if (board[r][c] == player) {
-                isConnect1 = true;
+                // Check left
+                if(board[r][c + 1] == board[r][c + 2] && board[r][c + 2] == board[r][c + 3])
+                    if(board[r][c + 1] == player)
+                        isPlayerThreat = true;
+                    else if(board[r][c + 1] == opponent)
+                        isOpponentThreat = true;
 
-                if(board[r - 1][c] == player){
-                    isConnect2 = true;
-                    if(board[r - 2][c]);
-                }
+                // Check Down (Stones drop from the top so up check is not needed)
+                if(board[r - 1][c] == board[r - 2][c] && board[r - 2][c] == board[r - 3][c])
+                    if(board[r - 1][c] == player)
+                        isPlayerThreat = true;
+                    else if(board[r - 1][c] == opponent)
+                        isOpponentThreat = true;
+
+                // Check diagonal down
+                if(board[r - 1][c - 1] == board[r - 2][c - 2] && board[r - 2][c - 2] == board[r - 3][c - 3])
+                    if(board[r - 1][c - 1] == player)
+                        isPlayerThreat = true;
+                    else if(board[r - 1][c - 1] == opponent)
+                        isOpponentThreat = true;
+
+                // Check diagonal up
+                if(board[r + 1][c + 1] == board[r + 2][c + 2] && board[r + 2][c + 2] == board[r + 3][c + 3])
+                    if(board[r + 1][c + 1] == player)
+                        isPlayerThreat = true;
+                    else if(board[r + 1][c + 1] == opponent)
+                        isOpponentThreat = true;
             }
 
-            if (isConnect1) {
-                if (isConnect2) {
-                    if (isConnect3) {
-                        score += 10000 * isPossibleWin;
-                    } else {
-                        score += 100 * isPossibleWin;
-                    }
-                } else {
-                    score++;
-                }
-            }
-
+            if(isPlayerThreat)
+                playerThreats.emplace_back(Point(r, c));
+            if(isOpponentThreat)
+                opponentThreats.emplace_back(Point(r, c));
         }
-
-        return score;
     }
+
+    score += playerThreats.size() - opponentThreats.size();
+
+    return score;
 }
-
-bool Solver::canConnect4(const State &board, const Player &player, const int &row, const int &column){
-
-
-}
-
 
 int Solver::getMove(State board, const int &round, const Player &currentPlayer, const int &depth) {
 
