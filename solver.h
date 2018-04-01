@@ -12,14 +12,15 @@
 using Threats = std::vector<std::pair<int, int>>;
 using Threat = std::pair<int, int>;
 
-struct Point {
-private:
+struct Threat {
     int x;
     int y;
-public:
-    Point(int row, int column){
-        x = row;
-        y = column;
+    int factor;
+
+    Threat(int row, int column, int f){
+        x = column;
+        y = row;
+        factor = f;
     }
 };
 
@@ -45,7 +46,7 @@ private:
      * Board evaluation
      * Returns a board score for the current player (color)
      */
-    int evaluation(const State &board, const int &color);
+    int64_t evaluation(const State &board, const int &color);
 
     /*
      * Find zugzwang board

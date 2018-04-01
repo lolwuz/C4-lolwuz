@@ -28,7 +28,7 @@ void C4Bot::move(int timeout) {
 
     currentPlayer = getCurrentPlayer(state);
 
-	std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 6) << std::endl;
+	std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 9) << std::endl;
 
 
 }

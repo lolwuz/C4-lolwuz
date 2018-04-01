@@ -121,69 +121,75 @@ int Solver::boundCheck(const State &board, const Player &player, const int &row,
         return 0;
 }
 
-int Solver::evaluation(const State &board, const int &color) {
+int getThreatFactor(const State &board, const int &r, const int &c, const int &dR, const int &dC, const Player &player, const Player &opponent) {
+    int factor = 0;
+    for(int i = 0; i < 4; i++){
+        Player p = board[r + dR * i][c + dC * i];
+        if(p == player)
+            factor++;
+        if(p == opponent)
+            return 0;
+    }
+    return factor;
+}
 
-    int score = 0;
+int64_t Solver::evaluation(const State &board, const int &color) {
 
-    Player player;
-    Player opponent;
+    int64_t score = 0;
 
-    if(color == 1){ player = Player::X; opponent = Player::O; }
-    else { player = Player::O; opponent = Player::X;}
+    Player player = color == 1 ? Player::X : Player::O;
+    Player opponent = player == Player::X ? Player::O : Player::X;
 
-    std::vector<Point> playerThreats;
-    std::vector<Point> opponentThreats;
+    int playerThreat = 0;
+    int opponentThreat = 0;
 
     for (int r = 0; r < 6; r++) {
         for (int c = 0; c < 7; c++) {
-            bool isPlayerThreat = false;
-            bool isOpponentThreat = false;
+            int playerThreat = 0;
+            int opponentThreat = 0;
             if(board[r][c] == Player::None){
-
                 // Check left
-                if(board[r][c - 1] == board[r][c - 2] && board[r][c - 2] == board[r][c - 3])
-                    if(board[r][c - 1] == player)
-                        isPlayerThreat = true;
-                    else if(board[r][c - 1] == opponent)
-                        isOpponentThreat = true;
+                if(c > 2) {
+                    playerThreat += getThreatFactor(board, r, c, 0, -1, player, opponent);
+                    opponentThreat += getThreatFactor(board, r, c, 0, -1, opponent, player);
+                }
 
-                // Check left
-                if(board[r][c + 1] == board[r][c + 2] && board[r][c + 2] == board[r][c + 3])
-                    if(board[r][c + 1] == player)
-                        isPlayerThreat = true;
-                    else if(board[r][c + 1] == opponent)
-                        isOpponentThreat = true;
+                // Check right
+                if(c < 4){
+                    playerThreat += getThreatFactor(board, r, c, 0, 1, player, opponent);
+                    opponentThreat += getThreatFactor(board, r, c, 0, 1, opponent, player);
+                }
 
                 // Check Down (Stones drop from the top so up check is not needed)
-                if(board[r - 1][c] == board[r - 2][c] && board[r - 2][c] == board[r - 3][c])
-                    if(board[r - 1][c] == player)
-                        isPlayerThreat = true;
-                    else if(board[r - 1][c] == opponent)
-                        isOpponentThreat = true;
+                if(r < 3){
+                    playerThreat += getThreatFactor(board, r, c, -1, 0, player, opponent);
+                    opponentThreat += getThreatFactor(board, r, c, -1, 0, opponent, player);
+                }
 
-                // Check diagonal down
-                if(board[r - 1][c - 1] == board[r - 2][c - 2] && board[r - 2][c - 2] == board[r - 3][c - 3])
-                    if(board[r - 1][c - 1] == player)
-                        isPlayerThreat = true;
-                    else if(board[r - 1][c - 1] == opponent)
-                        isOpponentThreat = true;
+                // Diagonal up
+                if(r < 3 && c < 4){
+                    playerThreat += getThreatFactor(board, r, c, -1, -1, player, opponent);
+                    opponentThreat += getThreatFactor(board, r, c, -1, -1, opponent, player);
+                }
 
-                // Check diagonal up
-                if(board[r + 1][c + 1] == board[r + 2][c + 2] && board[r + 2][c + 2] == board[r + 3][c + 3])
-                    if(board[r + 1][c + 1] == player)
-                        isPlayerThreat = true;
-                    else if(board[r + 1][c + 1] == opponent)
-                        isOpponentThreat = true;
+                // Diagonal down
+                if(r > 2 && c > 2){
+                    playerThreat += getThreatFactor(board, r, c, 1, 1, player, opponent);
+                    opponentThreat += getThreatFactor(board, r, c, 1, 1, opponent, player);
+                }
             }
-
-            if(isPlayerThreat)
-                playerThreats.emplace_back(Point(r, c));
-            if(isOpponentThreat)
-                opponentThreats.emplace_back(Point(r, c));
         }
     }
 
-    score += playerThreats.size() - opponentThreats.size();
+    Player winner = getWinner(board);
+
+    score = playerThreat - opponentThreat;
+
+    if(winner == player)
+        score += INT_MAX;
+    if(winner == opponent)
+        score -= INT_MAX;
+
 
     return score;
 }
