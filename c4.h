@@ -12,7 +12,7 @@
 #include <iostream>
 
 enum class Player { None, X, O };
-using Move = std::pair<int, int>;
+using Move = std::pair<int, int64_t>;
 using State = std::array<std::array<Player,7>,6>;
 
 // used to get a random element from a container
@@ -35,6 +35,7 @@ std::ostream &operator<<(std::ostream& os, const State &s);
 Player getCurrentPlayer(const State &state);
 State doMove(const State &state, const int &m);
 void undoMove(State &state, Move lastMove);
+int ipow(int base, int exp);
 Player getWinner(const State &state);
 Player getOtherPlayer(Player me);
 std::vector<Move> getMoves(const State &state);

@@ -37,6 +37,20 @@ Player getCurrentPlayer(const State &state)
     return (countX > countO ? Player::O : Player::X); 
 }
 
+int ipow(int base, int exp)
+{
+    int result = 1;
+    while (exp)
+    {
+        if (exp & 1)
+            result *= base;
+        exp >>= 1;
+        base *= base;
+    }
+
+    return result;
+}
+
 State doMove(const State &state, const int &m)
 {
     State result = state;

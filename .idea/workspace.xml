@@ -13,7 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="76f23f7c-0739-4c4b-a2e2-60e8f19b4271" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/c4.cpp" afterPath="$PROJECT_DIR$/c4.cpp" />
+      <change beforePath="$PROJECT_DIR$/c4.h" afterPath="$PROJECT_DIR$/c4.h" />
       <change beforePath="$PROJECT_DIR$/c4bot.cpp" afterPath="$PROJECT_DIR$/c4bot.cpp" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/c4.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/c4.cpp.o" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/c4bot.cpp.o" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/main.cpp.o" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/solver.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/c4-lolwuz.dir/solver.cpp.o" />
@@ -35,8 +38,8 @@
       <file leaf-file-name="c4bot.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/c4bot.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="30" column="79" lean-forward="false" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+            <state relative-caret-position="827">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="e#38#56#0" expanded="true" />
               </folding>
@@ -47,8 +50,8 @@
       <file leaf-file-name="solver.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solver.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="0">
+              <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
               <folding>
                 <element signature="e#98#114#0" expanded="true" />
               </folding>
@@ -59,12 +62,21 @@
       <file leaf-file-name="solver.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="33" />
+            <state relative-caret-position="350">
+              <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
               <folding>
                 <element signature="e#41#59#0" expanded="true" />
-                <element signature="e#793#2633#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="c4.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/c4.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-126">
+              <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,8 +84,8 @@
       <file leaf-file-name="c4.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/c4.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="296">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -111,6 +123,7 @@
       <find>inset</find>
       <find>isZug</find>
       <find>doMove</find>
+      <find>ipow</find>
     </findStrings>
     <replaceStrings>
       <replace>player</replace>
@@ -130,12 +143,12 @@
         <option value="$PROJECT_DIR$/minimax.h" />
         <option value="$PROJECT_DIR$/perfect.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/c4bot.h" />
         <option value="$PROJECT_DIR$/c4.cpp" />
         <option value="$PROJECT_DIR$/c4.h" />
-        <option value="$PROJECT_DIR$/c4bot.h" />
+        <option value="$PROJECT_DIR$/solver.h" />
         <option value="$PROJECT_DIR$/c4bot.cpp" />
         <option value="$PROJECT_DIR$/solver.cpp" />
-        <option value="$PROJECT_DIR$/solver.h" />
       </list>
     </option>
   </component>
@@ -273,11 +286,12 @@
       <workItem from="1522592498067" duration="17000" />
       <workItem from="1522592870145" duration="4927000" />
       <workItem from="1522599796627" duration="2203000" />
+      <workItem from="1522606314345" duration="2392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179873000" />
+    <option name="totallyTimeSpent" value="182265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -285,6 +299,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10364583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3128314" sideWeight="0.55078125" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3319194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.404" sideWeight="0.32890624" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -294,7 +309,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3647932" sideWeight="0.67109376" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3128314" sideWeight="0.55078125" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -312,7 +326,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="135" />
+      <option name="time" value="136" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -545,13 +559,6 @@
     </entry>
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/string" />
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm" />
-    <entry file="file://$PROJECT_DIR$/c4.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/C4-lolwuz.cbp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1633">
@@ -576,16 +583,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/c4.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="296">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c4.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126">
+          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c4bot.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="30" column="79" lean-forward="false" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+        <state relative-caret-position="827">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="e#38#56#0" expanded="true" />
           </folding>
@@ -594,8 +609,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/solver.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
           <folding>
             <element signature="e#98#114#0" expanded="true" />
           </folding>
@@ -604,11 +619,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/solver.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="350">
+          <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
-            <element signature="e#793#2633#0" expanded="false" />
           </folding>
         </state>
       </provider>

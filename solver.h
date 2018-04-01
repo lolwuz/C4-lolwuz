@@ -9,9 +9,6 @@
 #include <array>
 #include "c4.h"
 
-using Threats = std::vector<std::pair<int, int>>;
-using Threat = std::pair<int, int>;
-
 struct Threat {
     int x;
     int y;
@@ -23,6 +20,8 @@ struct Threat {
         factor = f;
     }
 };
+
+using Threats = std::vector<Threat>;
 
 class Solver {
     int evaluationTable[6][7] =
@@ -48,17 +47,8 @@ private:
      */
     int64_t evaluation(const State &board, const int &color);
 
-    /*
-     * Find zugzwang board
-     */
-    bool isZugzwang(const State &board, const Player &player);
-
-    /*
-     * Look for possible threats
-     */
-    Threats getThreats(const State &board, const Player &player);
-
-    int boundCheck(const State &board, const Player &player, const int &row, const int &column);
+    int64_t getThreatScore(const State &board, const int &r, const int &c, const int &dR, const int &dC, const Player &player,
+                           const Player &opponent);
 
 public:
     /*
@@ -66,9 +56,7 @@ public:
      */
     int getMove(State board, const int &round, const Player &currentPlayer,const int &depth);
 
-    State insertThreat(const State &board, const Player &player, const int &row, const int &column);
 
-    bool canConnect4(const State &board, const int &row, const int &column);
 };
 
 #endif //C4_LOLWUZ_SOLVER_H
