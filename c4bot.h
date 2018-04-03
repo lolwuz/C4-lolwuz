@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "c4.h"
-#include "solver.h"
+#include "Solver.h"
 
 class C4Bot {
     Solver solver;

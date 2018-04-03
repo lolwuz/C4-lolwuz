@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/Applications/CLion.app/Contents/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/Applications/CLion.app/Contents/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/cygdrive/c/Users/lolwuz/.CLion2017.3/system/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/lolwuz/Documents/GitHub/C4-lolwuz/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,60 @@ c4-lolwuz: cmake_check_build_system
 c4-lolwuz/fast:
 	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/build
 .PHONY : c4-lolwuz/fast
+
+Solver.o: Solver.cpp.o
+
+.PHONY : Solver.o
+
+# target to build an object file
+Solver.cpp.o:
+	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/Solver.cpp.o
+.PHONY : Solver.cpp.o
+
+Solver.i: Solver.cpp.i
+
+.PHONY : Solver.i
+
+# target to preprocess a source file
+Solver.cpp.i:
+	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/Solver.cpp.i
+.PHONY : Solver.cpp.i
+
+Solver.s: Solver.cpp.s
+
+.PHONY : Solver.s
+
+# target to generate assembly for a file
+Solver.cpp.s:
+	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/Solver.cpp.s
+.PHONY : Solver.cpp.s
+
+Transposition.o: Transposition.cpp.o
+
+.PHONY : Transposition.o
+
+# target to build an object file
+Transposition.cpp.o:
+	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/Transposition.cpp.o
+.PHONY : Transposition.cpp.o
+
+Transposition.i: Transposition.cpp.i
+
+.PHONY : Transposition.i
+
+# target to preprocess a source file
+Transposition.cpp.i:
+	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/Transposition.cpp.i
+.PHONY : Transposition.cpp.i
+
+Transposition.s: Transposition.cpp.s
+
+.PHONY : Transposition.s
+
+# target to generate assembly for a file
+Transposition.cpp.s:
+	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/Transposition.cpp.s
+.PHONY : Transposition.cpp.s
 
 c4.o: c4.cpp.o
 
@@ -204,60 +258,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-solver.o: solver.cpp.o
-
-.PHONY : solver.o
-
-# target to build an object file
-solver.cpp.o:
-	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/solver.cpp.o
-.PHONY : solver.cpp.o
-
-solver.i: solver.cpp.i
-
-.PHONY : solver.i
-
-# target to preprocess a source file
-solver.cpp.i:
-	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/solver.cpp.i
-.PHONY : solver.cpp.i
-
-solver.s: solver.cpp.s
-
-.PHONY : solver.s
-
-# target to generate assembly for a file
-solver.cpp.s:
-	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/solver.cpp.s
-.PHONY : solver.cpp.s
-
-transposition.o: transposition.cpp.o
-
-.PHONY : transposition.o
-
-# target to build an object file
-transposition.cpp.o:
-	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/transposition.cpp.o
-.PHONY : transposition.cpp.o
-
-transposition.i: transposition.cpp.i
-
-.PHONY : transposition.i
-
-# target to preprocess a source file
-transposition.cpp.i:
-	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/transposition.cpp.i
-.PHONY : transposition.cpp.i
-
-transposition.s: transposition.cpp.s
-
-.PHONY : transposition.s
-
-# target to generate assembly for a file
-transposition.cpp.s:
-	$(MAKE) -f CMakeFiles/c4-lolwuz.dir/build.make CMakeFiles/c4-lolwuz.dir/transposition.cpp.s
-.PHONY : transposition.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -267,6 +267,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c4-lolwuz"
+	@echo "... Solver.o"
+	@echo "... Solver.i"
+	@echo "... Solver.s"
+	@echo "... Transposition.o"
+	@echo "... Transposition.i"
+	@echo "... Transposition.s"
 	@echo "... c4.o"
 	@echo "... c4.i"
 	@echo "... c4.s"
@@ -276,12 +282,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... solver.o"
-	@echo "... solver.i"
-	@echo "... solver.s"
-	@echo "... transposition.o"
-	@echo "... transposition.i"
-	@echo "... transposition.s"
 .PHONY : help
 
 
