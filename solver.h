@@ -10,14 +10,16 @@
 #include "c4.h"
 
 struct Threat {
-    int x;
-    int y;
+    int c;
+    int r;
     int factor;
+    bool isEven;
 
     Threat(int row, int column, int f){
-        x = column;
-        y = row;
+        c = column;
+        r = row;
         factor = f;
+        isEven = (r + 1) % 2 == 0;
     }
 };
 
@@ -47,16 +49,29 @@ private:
      */
     int64_t evaluation(const State &board, const int &color);
 
-    int64_t getThreatScore(const State &board, const int &r, const int &c, const int &dR, const int &dC, const Player &player,
-                           const Player &opponent);
+    /*
+     * Return the factor of a threat. 3 == Only one stone needed to connect 4. 2 == 2 stones are needed.
+     */
+    int getThreatFactor(const State &board, const int &r, const int &c, const int &dR, const int &dC, const Player &player, const Player &opponent);
+
+    /*
+     * Looks for all possible threats (empty squares that can connect 4) on the board.
+     */
+    Threats getThreats(const State &board, const Player &player, const Player &opponent);
+
+    /*
+     * There are other possible combinations of threats for the two players. Let us suppose the combi-
+     * nations of one threat per player, assuming that the threats are in different columns. We can now easily
+     * deduce whose threat will be the strongest (we assume that no other threats will be created).
+     * http://www.informatik.uni-trier.de/~fernau/DSL0607/Masterthesis-Viergewinnt.pdf (Page 20).
+     */
+    void filterThreats(Threats &playerThreats, Threats &opponentThreats);
 
 public:
     /*
      * returns a int that represent a move (column number)
      */
     int getMove(State board, const int &round, const Player &currentPlayer,const int &depth);
-
-
 };
 
 #endif //C4_LOLWUZ_SOLVER_H

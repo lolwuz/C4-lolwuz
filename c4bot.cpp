@@ -2,11 +2,9 @@
 // Aswin van Woudenberg
 
 #include "c4bot.h"
-#include "solver.h"
 
 #include <sstream>
 #include <list>
-#include <climits>
 
 void C4Bot::run() {
 	std::string line;
@@ -30,13 +28,8 @@ void C4Bot::move(int timeout) {
 
 	std::cerr << timeout << std::endl;
 
-	if(round < 8)
-		std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 8) << std::endl;
-	else
-		std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 10) << std::endl;
 
-
-
+    std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 9) << std::endl;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {
