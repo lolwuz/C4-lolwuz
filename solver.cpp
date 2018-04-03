@@ -3,6 +3,7 @@
 //
 #include <climits>
 #include <list>
+#include <stdint.h>
 #include "c4.h"
 #include "solver.h"
 
@@ -15,10 +16,10 @@ Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const 
     int bestMove = -1;
 
     for (Move move:getMoves(board)) {
-        int64_t value = -negamax(doMove(board, move.first), depth - 1, -beta, -alpha, -color).second;
+        int64_t value = -negamax(doMove(board, move.column), depth - 1, -beta, -alpha, -color).score;
 
         if (value > bestValue) {
-            bestMove = move.first;
+            bestMove = move.column;
             bestValue = value;
         }
 
@@ -29,10 +30,10 @@ Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const 
         if (alpha >= beta)
             break;
     }
-    return Move{bestMove, bestValue};
+    return {bestMove, bestValue};
 }
 
-bool isInsideBound(int row, int column){
+bool Solver::isInsideBound(int row, int column){
     return column >= 0 && column <= 6 && row >= 0 && row <= 5;
 }
 
@@ -40,30 +41,32 @@ int Solver::getThreatFactor(const State &board, const int &r, const int &c, cons
                             const Player &player, const Player &opponent) {
     int factor = 0;
 
-    for(int i = 1; i < 4; i++){
-        if(!isInsideBound(r + dR * i, c + dC * i))
+    for (int i = 1; i < 4; i++) {
+        if (!isInsideBound(r + dR * i, c + dC * i))
             break;
         Player p = board[r + dR * i][c + dC * i];
-        if(p == player)
+        if (p == player)
             factor++;
-        if(factor == 3) // Max factor reached.
+        if (factor == 3) // Max factor reached.
             return factor;
-        if(p == opponent) // Factor not possible
+        if (p == opponent) // Factor not possible
             break;
     }
 
-    for(int i = -1; i > -4; i--){
-        if(!isInsideBound(r + dR * i, c + dC * i))
+    for (int i = -1; i > -4; i--) {
+        if (!isInsideBound(r + dR * i, c + dC * i))
             break;
 
         Player p = board[r + dR * i][c + dC * i];
-        if(p == player)
+        if (p == player)
             factor++;
-        if(factor == 3)
+        if (factor == 3)
             return factor;
-        if(p == opponent)
-            return 0;
+        if (p == opponent)
+            return -1;
     }
+
+    return factor;
 }
 
 
@@ -90,29 +93,7 @@ Threats Solver::getThreats(const State &board, const Player &player, const Playe
 
 void Solver::filterThreats(Threats &playerThreats, Threats &opponentThreats) {
     for (auto &playerThreat : playerThreats) {
-        if(playerThreat.factor == 3) {
-            if (!playerThreat.isEven) {
-                for (auto &opponentThreat : opponentThreats) {
-                    if(opponentThreat.factor == 3) {
-                        if (opponentThreat.isEven) {
-                            opponentThreat.factor = 0;
-                        } else {
-                            playerThreat.factor = 0;
-                        }
-                    }
-                }
-            } else {
-                for (auto &opponentThreat : opponentThreats) {
-                    if(opponentThreat.factor == 3) {
-                        if (opponentThreat.isEven) {
-                            playerThreat.factor = 0;
-                        } else {
-                            opponentThreat.factor = 0;
-                        }
-                    }
-                }
-            }
-        }
+        if(!playerThreat.isEven){}
     }
 }
 
@@ -138,39 +119,58 @@ int64_t Solver::evaluation(const State &board, const int &color) {
     filterThreats(playerThreats, opponentThreats);
 
     for(auto threat: playerThreats){
-        if(threat.factor == 1)
-            score += evaluationTable[threat.r][threat.c];
-        if(threat.factor == 2)
-            score += 100;
-        if(threat.factor == 3)
-            score += 1000;
+        switch(threat.factor){
+            case 0:
+                score += evaluationTable[threat.r][threat.c];
+            case 1:
+                score += 100;
+                break;
+            case 2:
+                score += 1000;
+                break;
+            case 3:
+                score += 10000;
+                break;
+            default:
+                break;
+        }
     }
 
     for(auto threat: opponentThreats){
-        if(threat.factor == 1)
-            score -= evaluationTable[threat.r][threat.c];
-        if(threat.factor == 2)
-            score -= 100;
-        if(threat.factor == 3)
-            score -= 1000;
+        switch(threat.factor){
+            case 0:
+                score -= evaluationTable[threat.r][threat.c];
+            case 1:
+                score -= 100;
+                break;
+            case 2:
+                score -= 1000;
+                break;
+            case 3:
+                score -= 10000;
+                break;
+            default:
+                break;
+        }
     }
 
     return score;
 }
 
 int Solver::getMove(State board, const int &round, const Player &currentPlayer, const int &depth) {
+    // evaluation(board, -1);
 
     int column = 0; // Middle column
 
     if (round < 2)
         column = 3;
     else if (currentPlayer == Player::X)
-        column = negamax(board, depth, -INT64_MAX, INT64_MAX, 1).first;
+        column = negamax(board, depth, -INT64_MAX, INT64_MAX, 1).column;
     else // Playing as Player O
-        column = negamax(board, depth, -INT64_MAX, INT64_MAX, -1).first;
+        column = negamax(board, depth, -INT64_MAX, INT64_MAX, -1).column;
 
     if (column == -1)
-        return getMoves(board).front().first;
+        return getMoves(board).front().column;
     else
         return column;
 }

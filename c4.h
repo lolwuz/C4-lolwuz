@@ -12,30 +12,39 @@
 #include <iostream>
 
 enum class Player { None, X, O };
-using Move = std::pair<int, int64_t>;
+
+struct Move {
+    int column;
+    int64_t score;
+
+    Move(int c, int64_t s){
+        column = c;
+        score = s;
+    }
+};
+
+struct Threat {
+    int c;
+    int r;
+    int factor;
+    bool isEven;
+
+    Threat(int row, int column, int f){
+        c = column;
+        r = row;
+        factor = f;
+        isEven = (r + 1) % 2 == 0;
+    }
+};
+
+using Threats = std::vector<Threat>;
+
 using State = std::array<std::array<Player,7>,6>;
-
-// used to get a random element from a container
-template<typename Iter, typename RandomGenerator>
-Iter select_randomly(Iter start, Iter end, RandomGenerator& g) {
-    std::uniform_int_distribution<> dis(0, std::distance(start, end) - 1);
-    std::advance(start, dis(g));
-    return start;
-}
-
-template<typename Iter>
-Iter select_randomly(Iter start, Iter end) {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    return select_randomly(start, end, gen);
-}
 
 std::ostream &operator<<(std::ostream& os, const Player &p);
 std::ostream &operator<<(std::ostream& os, const State &s);
 Player getCurrentPlayer(const State &state);
 State doMove(const State &state, const int &m);
-void undoMove(State &state, Move lastMove);
-int ipow(int base, int exp);
 Player getWinner(const State &state);
 Player getOtherPlayer(Player me);
 std::vector<Move> getMoves(const State &state);

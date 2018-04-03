@@ -29,7 +29,7 @@ void C4Bot::move(int timeout) {
 	std::cerr << timeout << std::endl;
 
 
-    std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 9) << std::endl;
+    std::cout << "place_disc " << solver.getMove(state, round, currentPlayer, 8) << std::endl;
 }
 
 void C4Bot::update(std::string &key, std::string &value) {

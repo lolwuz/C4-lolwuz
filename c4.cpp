@@ -65,11 +65,11 @@ State doMove(const State &state, const int &m)
 
 void undoMove(State &state, Move lastMove){
     for(int rows = 0; rows < 6; rows++){
-        if(state[rows][lastMove.first] == Player::None){
-            state[rows - 1][lastMove.first] = Player::None;
+        if(state[rows][lastMove.column] == Player::None){
+            state[rows - 1][lastMove.column] = Player::None;
         }
         if(rows == 5)
-            state[rows][lastMove.first] = Player::None;
+            state[rows][lastMove.column] = Player::None;
     }
 }
 
@@ -106,8 +106,7 @@ std::vector<Move> getMoves(const State &state) {
     if (getWinner(state) == Player::None){
         for (int i = 0; i < 7; i++){
             if (state[0][i] == Player::None) {
-                std::pair<int, int> pair = std::pair<int, int>(i, 0);
-                moves.push_back(pair);
+                moves.emplace_back(i, 0);
             }
         }
     }

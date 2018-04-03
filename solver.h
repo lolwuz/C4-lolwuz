@@ -9,21 +9,6 @@
 #include <array>
 #include "c4.h"
 
-struct Threat {
-    int c;
-    int r;
-    int factor;
-    bool isEven;
-
-    Threat(int row, int column, int f){
-        c = column;
-        r = row;
-        factor = f;
-        isEven = (r + 1) % 2 == 0;
-    }
-};
-
-using Threats = std::vector<Threat>;
 
 class Solver {
     int evaluationTable[6][7] =
@@ -66,6 +51,11 @@ private:
      * http://www.informatik.uni-trier.de/~fernau/DSL0607/Masterthesis-Viergewinnt.pdf (Page 20).
      */
     void filterThreats(Threats &playerThreats, Threats &opponentThreats);
+
+    /*
+     * Array boundary filter
+     */
+    bool isInsideBound(int row, int column);
 
 public:
     /*
