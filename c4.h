@@ -27,13 +27,11 @@ struct Threat {
     int c;
     int r;
     int factor;
-    bool isEven;
 
     Threat(int row, int column, int f){
         c = column;
         r = row;
         factor = f;
-        isEven = (r + 1) % 2 == 0;
     }
 };
 

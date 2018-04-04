@@ -103,16 +103,16 @@ Player getWinner(const State &state)
 
 std::vector<Move> getMoves(const State &state) {
     std::vector<Move> moves;
-    if (getWinner(state) == Player::None){
+    if (getWinner(state) == Player::None) {
         // Move exploration order from the middle column
-        if(state[0][3] == Player::None)
+        if (state[0][3] == Player::None)
             moves.emplace_back(3, 0);
 
-        for (int i = 1; i < 4; i++){
+        for (int i = 1; i < 4; i++) {
             if (state[0][3 + i] == Player::None)
                 moves.emplace_back(3 + i, 0);
-            if(state[0][3 - i] == Player::None)
-                moves.emplace_back(3 -i, 0);
+            if (state[0][3 - i] == Player::None)
+                moves.emplace_back(3 - i, 0);
         }
     }
 

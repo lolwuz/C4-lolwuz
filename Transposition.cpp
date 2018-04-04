@@ -5,7 +5,7 @@
 #include "Transposition.h"
 
 unsigned long long int Transposition::computeHash(const State &board) {
-    using long long int hash = 0;
+    unsigned long long int hash = 0;
     for (int r = 0; r < 6; r++) {
         for (int c = 0; c < 7; c++) {
             if(board[r][c] != Player::None){
@@ -14,6 +14,7 @@ unsigned long long int Transposition::computeHash(const State &board) {
             }
         }
     }
+    return hash;
 }
 
 unsigned long long int Transposition::randomInt() {
@@ -33,7 +34,7 @@ int Transposition::indexOf(Player player) {
     }
 }
 
-void Transposition::initTable() {
+Transposition::Transposition() {
     for (int r = 0; r < 6; r++) {
         for (int c = 0; c < 7; c++) {
             for(int d = 0; d < 3; d++){
@@ -41,4 +42,12 @@ void Transposition::initTable() {
             }
         }
     }
+}
+
+void Transposition::push(Hashentry ttEntry) {
+
+}
+
+Hashentry Transposition::get(const State &board) {
+    unsigned long long int index = computeHash(board) % 147;
 }

@@ -6,24 +6,7 @@
 #include "c4.h"
 #include "Solver.h"
 
-Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const int &color) {
-    int64_t alphaOrigin = alpha;
-
-    Hashentry ttEntry = transposition.lookup();
-
-    if(ttEntry.depth > depth){
-        if (ttEntry.flag == Flag::EXACT)
-            return { -1 ,ttEntry.move.score};
-        else if(ttEntry.flag == Flag::LOWERBOUND)
-            alpha = std::max(alpha, ttEntry.move.score);
-        else if (ttEntry.flag == Flag::UPPERBOUND){
-            beta = std::min(beta, ttEntry.move.score);
-        }
-
-        if(alpha > beta)
-            return {-1, ttEntry.move.score };
-    }
-
+Move Solver::negamax(const State &board, int depth, int64_t alpha, int64_t beta, const int &color) {
     if (depth == 0 || getWinner(board) != Player::None) {
         return Move {-1, evaluation(board, color)};
     }
@@ -46,19 +29,6 @@ Move Solver::negamax(State board, int depth, int64_t alpha, int64_t beta, const 
         if (alpha >= beta)
             break;
     }
-
-    // Transposition Table storing
-    ttEntry.move.score = bestValue;
-    if(bestValue < alphaOrigin)
-        ttEntry.flag = Flag::UPPERBOUND;
-    else if(bestValue > beta)
-        ttEntry.flag = Flag::LOWERBOUND;
-    else
-        ttEntry.flag = Flag::EXACT;
-
-    ttEntry.depth = depth;
-
-    transposition.store(board, ttEntry);
 
     return {bestMove, bestValue};
 }
@@ -119,36 +89,6 @@ Threats Solver::getThreats(const State &board, const Player &player, const Playe
     return threats;
 }
 
-void Solver::filterThreats(Threats &playerThreats, Threats &opponentThreats) {
-    int opponentOdd = 0;
-    int playerOdd = 0;
-    for (auto &playerThreat : playerThreats) {
-        if(playerThreat.isEven){
-
-        }
-        else {
-            for(auto &opponentThreat : opponentThreats){
-                // even threats from Player B below it in the same column,
-                if(opponentThreat.isEven && opponentThreat.c == playerThreat.c && opponentThreat.r < playerThreat.r){
-                    playerThreat.factor = -1;
-                } else { // If instead Player A had a greater number of odd threats (with no even threats from Player B below them)
-                    opponentOdd++;
-                }
-            }
-
-            playerOdd++;
-        }
-    }
-
-    if(playerOdd > opponentOdd){
-        for(auto &opponentThreat : opponentThreats){
-            if(opponentThreat.factor == 3){
-                opponentThreat.factor = -1;
-            }
-        }
-    }
-}
-
 int64_t Solver::evaluation(const State &board, const int &color) {
     // Base score
     int64_t score = 0;
@@ -168,21 +108,21 @@ int64_t Solver::evaluation(const State &board, const int &color) {
     Threats playerThreats = getThreats(board, player, opponent);
     Threats opponentThreats = getThreats(board, opponent, player);
 
-    // filterThreats(playerThreats, opponentThreats);
+    filterThreats(playerThreats, opponentThreats);
 
     for(auto threat: playerThreats){
         switch(threat.factor){
             case 0:
-                score += 10;
+                score += 1;
                 break;
             case 1:
-                score += 100;
+                score += 10;
                 break;
             case 2:
                 score += 1000;
                 break;
             case 3:
-                score += 10000;
+                score += 1000000;
                 break;
             default:
                 break;
@@ -192,16 +132,16 @@ int64_t Solver::evaluation(const State &board, const int &color) {
     for(auto threat: opponentThreats){
         switch(threat.factor){
             case 0:
-                score -= 10;
+                score -= 1;
                 break;
             case 1:
-                score -= 100;
+                score -= 10;
                 break;
             case 2:
                 score -= 1000;
                 break;
             case 3:
-                score -= 10000;
+                score -= 1000000;
                 break;
             default:
                 break;
@@ -213,8 +153,6 @@ int64_t Solver::evaluation(const State &board, const int &color) {
 
 int Solver::getMove(State board, const int &round, const Player &currentPlayer, const int &depth) {
     // Generate the transposition Table
-    transposition.initTable();
-
     int column = 0; // Middle column
 
     if (round < 2)
@@ -228,4 +166,34 @@ int Solver::getMove(State board, const int &round, const Player &currentPlayer, 
         return getMoves(board).front().column;
     else
         return column;
+}
+
+void Solver::filterThreats(Threats &playerThreats, Threats &opponentThreats) {
+    int opponentOdd = 0;
+    int playerOdd = 0;
+    for (auto &playerThreat : playerThreats) {
+        if((playerThreat.r + 1) % 2 == 0){
+
+        }
+        else {
+            for(auto &opponentThreat : opponentThreats){
+                // even threats from Player B below it in the same column,
+                if((opponentThreat.r + 1) % 2 == 0 && opponentThreat.c == playerThreat.c && opponentThreat.r < playerThreat.r){
+                    playerThreat.factor = -1;
+                } else { // If instead Player A had a greater number of odd threats (with no even threats from Player B below them)
+                    opponentOdd++;
+                }
+            }
+
+            playerOdd++;
+        }
+    }
+
+    if(playerOdd > opponentOdd){
+        for(auto &opponentThreat : opponentThreats){
+            if(opponentThreat.factor == 3){
+                opponentThreat.factor = -1;
+            }
+        }
+    }
 }

@@ -29,7 +29,7 @@ private:
      * Negamax alpha beta pruning
      * https://en.wikipedia.org/wiki/Negamax
      */
-    Move negamax(State board, int depth, int64_t alpha, int64_t beta, const int &color);
+    Move negamax(const State &board, int depth, int64_t alpha, int64_t beta, const int &color);
 
     /*
      * Board evaluation
