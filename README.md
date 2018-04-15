@@ -3,6 +3,6 @@ A C++ [connect four](https://playground.riddles.io/competitions/four-in-a-row) s
 
 ## Algorithm
 This bot uses the Negamax (minimax search) that relies on the zero-sum property of a two player game.
-https://en.wikipedia.org/wiki/Negamax
+(https://en.wikipedia.org/wiki/Negamax)
 Some optimisations include filtering of useless threats (can be enabled by using the function filterThreats()) and move ordering.
 
